@@ -1,0 +1,45 @@
+{
+  "name": "bankday",
+  "version": "1.0.0",
+  "description": "Business days, bank holidays and settlement dates for ACH, TARGET2, Bacs, Payments Canada, 28 exchanges and 247 countries.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "business days",
+    "bank holidays",
+    "ach",
+    "fedwire",
+    "target2",
+    "nyse",
+    "holidays",
+    "settlement",
+    "fx",
+    "value date"
+  ],
+  "homepage": "https://bankday.dev/docs",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParsingMAINFRAME/bankday-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ParsingMAINFRAME/bankday-js/issues"
+  }
+}
