@@ -24,7 +24,7 @@ export class Bankday {
   async request(path, params = {}) {
     const url = new URL(this.baseUrl + path);
     for (const [k, v] of Object.entries(params)) if (v !== undefined && v !== null) url.searchParams.set(k, String(v));
-    const res = await this.fetch(url, { headers: { authorization: `Bearer ${this.apiKey}`, "user-agent": "bankday-js/1.0.0" } });
+    const res = await this.fetch(url, { headers: { authorization: `Bearer ${this.apiKey}`, "user-agent": "bankday-js/1.1.0" } });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) {
       const e = body.error || {};

@@ -10,4 +10,6 @@ assert.equal((await bd.fxSpot("EURUSD", "2026-11-25")).spot_date, "2026-11-27");
 assert.equal((await bd.isBusinessDay("xnys", "2026-11-27")).early_closes[0].close_time, "13:00");
 assert.equal((await bd.isBusinessDay("lynx", "2026-12-28")).business_day, false);
 await assert.rejects(() => bd.isBusinessDay("narnia", "2026-01-02"), (e) => e instanceof BankdayError && e.status === 404);
+const pay = await bd.payrollSchedule("us-fed", "semimonthly", { year: 2027 });
+assert.equal(pay.pay_dates.find((p) => p.scheduled === "2027-02-15").pay_date, "2027-02-12");
 console.log("bankday-js: all checks passed");

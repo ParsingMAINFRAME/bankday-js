@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 7 * * 1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # Runs against Bankday's keyless demo endpoints, so no secret is needed
+      - run: node test.mjs
+        env:
+          BANKDAY_API_KEY: demo
+          BANKDAY_BASE_URL: https://bankday.dev/demo
