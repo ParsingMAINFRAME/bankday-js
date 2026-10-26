@@ -44,6 +44,7 @@ export class Bankday {
   holidays(calendar, opts = {}) { return this.request("/v1/holidays", { calendar: cal(calendar), year: opts.year, start: opts.start, end: opts.end }); }
   fxSpot(pair, tradeDate) { return this.request("/v1/fx/spot", { pair, trade_date: tradeDate }); }
   achSettlement(opts = {}) { return this.request("/v1/ach/settlement", { submitted_at: opts.submittedAt, type: opts.type, amount: opts.amount }); }
+  payrollSchedule(calendar, frequency, opts = {}) { return this.request("/v1/payroll/schedule", { calendar: cal(calendar), frequency, year: opts.year, start: opts.start, end: opts.end, anchor: opts.anchor, days: opts.days, day: opts.day, adjust: opts.adjust, lead_days: opts.leadDays }); }
   calendars(opts = {}) { return this.request("/v1/calendars", { type: opts.type, q: opts.q }); }
   calendar(id) { return this.request(`/v1/calendars/${encodeURIComponent(id)}`); }
   account() { return this.request("/v1/account"); }

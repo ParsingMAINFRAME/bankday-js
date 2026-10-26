@@ -35,6 +35,11 @@ export class Bankday {
   holidays(calendar: CalendarArg, opts?: { year?: number; start?: string; end?: string }): Promise<{ count: number; holidays: { date: string; weekday: string; name: string; calendar: string }[]; early_closes?: (EarlyClose & { date: string })[] }>;
   fxSpot(pair: string, tradeDate: string): Promise<{ pair: string; trade_date: string; spot_lag: number; spot_date: string; calendars: Record<string, string> }>;
   achSettlement(opts?: { submittedAt?: string; type?: "standard" | "same_day"; amount?: number }): Promise<{ settlement_date: string; settlement_time_et: string; same_day_window: number | null; notes: string[] }>;
+  payrollSchedule(
+    calendar: CalendarArg,
+    frequency: "weekly" | "biweekly" | "semimonthly" | "monthly",
+    opts?: { year?: number; start?: string; end?: string; anchor?: string; days?: string; day?: string; adjust?: "preceding" | "following" | "modified_preceding" | "modified_following" | "none"; leadDays?: number },
+  ): Promise<{ count: number; adjusted_count: number; pay_dates: { scheduled: string; pay_date: string; weekday: string; adjusted: boolean; reason?: string; submit_by: string | null }[] }>;
   calendars(opts?: { type?: "rail" | "exchange" | "country"; q?: string }): Promise<{ count: number; calendars: unknown[] }>;
   calendar(id: CalendarId): Promise<unknown>;
   account(): Promise<unknown>;
